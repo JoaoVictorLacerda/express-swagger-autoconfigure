@@ -8,6 +8,7 @@ export default function Patch(endpoint:string="/",...middleware:any) {
         InitSingletons(target.constructor.name)
         descriptor.value.endpoint = "PATCH "+endpoint
         SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["PATCH "+endpoint] = {}
+        SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["PATCH "+endpoint]["security"] = middleware.length
 
         addExpressInformation(endpoint, target, descriptor, middleware)
 

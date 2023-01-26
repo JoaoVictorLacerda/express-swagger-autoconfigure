@@ -8,6 +8,7 @@ export default function Post(endpoint:string="/",...middleware:any) {
         InitSingletons(target.constructor.name)
         descriptor.value.endpoint = "POST "+endpoint
         SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["POST "+endpoint] = {}
+        SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["POST "+endpoint]["security"] = middleware.length
 
         addExpressInformation(endpoint, target, descriptor, middleware)
     }

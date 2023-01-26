@@ -10,6 +10,7 @@ export default function Delete(endpoint:string="/", ...middleware:any) {
         InitSingletons(target.constructor.name)
         descriptor.value.endpoint ="DELETE "+endpoint
         SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["DELETE "+endpoint] = {}
+        SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["DELETE "+endpoint]["security"] = middleware.length
 
         addExpressInformation(endpoint, target, descriptor, middleware)
 

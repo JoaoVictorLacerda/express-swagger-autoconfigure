@@ -20,6 +20,9 @@ export default function ExpressInjectable(target: any, propertyKey: string) {
             if(key2 !== "endpoint"){
 
                 const httpMethodAndRoute = key2.split(" ");
+                httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/{/g,":")
+                httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/}/g,"")
+
                 const callback = rotes[key][key2].function;
                 const middleware = rotes[key][key2].middleware;
 

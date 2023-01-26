@@ -8,6 +8,7 @@ export default function Get(endpoint:string="/",...middleware:any) {
         InitSingletons(target.constructor.name)
         descriptor.value.endpoint = "GET "+endpoint
         SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["GET "+endpoint] = {}
+        SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["GET "+endpoint]["security"] = middleware.length
 
         addExpressInformation(endpoint, target, descriptor, middleware)
 

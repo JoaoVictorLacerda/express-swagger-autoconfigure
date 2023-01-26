@@ -8,6 +8,7 @@ export default function Put(endpoint:string="/",...middleware:any) {
         InitSingletons(target.constructor.name)
         descriptor.value.endpoint = "PUT "+endpoint
         SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["PUT "+endpoint] = {}
+        SwaggerInformation.getInstance().getEnpoints()[target.constructor.name]["PUT "+endpoint]["security"] = middleware.length
 
         addExpressInformation(endpoint, target, descriptor, middleware)
     }
