@@ -2,11 +2,10 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/JoaoVictorLacerda/express-swagger-autoconfigure/blob/main/license)
 [![npm version](https://img.shields.io/npm/v/npm-package.svg?style=flat)](https://www.npmjs.com/package/express-swagger-autoconfigure)
-[![Build Status](https://travis-ci.org/username/project-name.svg?branch=master)](https://travis-ci.org/username/project-name)
 
 Manage route configurations for your express application automatically and generate automatic documentation with swagger.
 
-## Installation and Use
+## Installation and Usage
 ```jsx
 npm i express-swagger-autoconfigure
 ```
