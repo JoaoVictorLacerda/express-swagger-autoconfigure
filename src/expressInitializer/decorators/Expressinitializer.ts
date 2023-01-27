@@ -35,6 +35,7 @@ export default function Expressinitializer(target: any, propertyKey: string) {
         app.use(finalUrl, expressRoutes)
     })
 
+    console.log("\n")
     rotes["app"] = app
     target[propertyKey] = app;
 }
