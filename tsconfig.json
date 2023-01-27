@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "resolveJsonModule": true,
+      "incremental": true,
+      "target": "ES2020",
+      "module": "CommonJS",
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true,
+      "strictPropertyInitialization": false,
+      "types": ["node", "jest"],
+      "strictNullChecks": false,
+      "skipLibCheck": true,                           /* Skip type checking of declaration files. */
+      "useUnknownInCatchVariables": false,
+      "declaration": true
+    },
+    "include": [
+      "src/**/*"
+    ]
+  
+  }

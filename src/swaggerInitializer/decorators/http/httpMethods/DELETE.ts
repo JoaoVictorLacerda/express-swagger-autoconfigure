@@ -1,7 +1,7 @@
 import InitSingletons from "../../../../config/InitSingletons";
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
 import ExpressInformation from "../../../../config/singletons/ExpressInformation";
-import ExpressDelete from "../../../../expressInitializer/decorators/httpMethods/ExpressDelete";
+import ExpressDelete from "../../../../expressInitializer/httpMethods/ExpressDelete";
 
 export default function Delete(endpoint:string="/", ...middleware:any) {
 

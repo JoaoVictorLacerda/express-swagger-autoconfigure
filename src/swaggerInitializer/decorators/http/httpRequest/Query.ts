@@ -1,4 +1,4 @@
-import InitSingletons from "../../../../config/InitSingletons";
+
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
 
 export default function Query(query: any) {

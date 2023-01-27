@@ -1,9 +1,10 @@
 import express, {json, Router} from "express";
 import ExpressInformation from "../../config/singletons/ExpressInformation";
-import SwaggerInitializer from "../../swaggerInitializer/decorators/swagger/SwaggerInitializer";
+import LoggerComponent from "../../component/LoggerComponent";
 
 
-export default function ExpressInjectable(target: any, propertyKey: string) {
+const logger = new LoggerComponent("express-autoconfigure")
+export default function Expressinitializer(target: any, propertyKey: string) {
 
     const rotes:any = ExpressInformation.getInstance().getApi();
 
@@ -27,7 +28,7 @@ export default function ExpressInjectable(target: any, propertyKey: string) {
                 const middleware = rotes[key][key2].middleware;
 
                 getHttpMethod(expressRoutes, httpMethodAndRoute[0], httpMethodAndRoute[1], callback, middleware)
-
+                logger.info(`${key2} - mapped successfully`)
             }
         })
         const finalUrl = rotes[controllerName].endpoint

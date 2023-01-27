@@ -1,4 +1,4 @@
-import ExpressInformation from "../../../config/singletons/ExpressInformation";
+import ExpressInformation from "../../config/singletons/ExpressInformation";
 
 export default function ExpressPost(endpoint:string, constructorName: string,
                                     functionValue: Function,...middleware:any) {

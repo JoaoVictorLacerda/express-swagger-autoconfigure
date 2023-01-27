@@ -1,6 +1,6 @@
 import InitSingletons from "../../../../config/InitSingletons";
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
-import ExpressPost from "../../../../expressInitializer/decorators/httpMethods/ExpressPost";
+import ExpressPost from "../../../../expressInitializer/httpMethods/ExpressPost";
 
 export default function Post(endpoint:string="/",...middleware:any) {
 

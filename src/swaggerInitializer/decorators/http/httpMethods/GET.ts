@@ -1,6 +1,6 @@
 import InitSingletons from "../../../../config/InitSingletons";
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
-import ExpressGet from "../../../../expressInitializer/decorators/httpMethods/ExpressGet";
+import ExpressGet from "../../../../expressInitializer/httpMethods/ExpressGet";
 
 export default function Get(endpoint:string="/",...middleware:any) {
 

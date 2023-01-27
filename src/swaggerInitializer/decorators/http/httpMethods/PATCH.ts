@@ -1,6 +1,6 @@
 import InitSingletons from "../../../../config/InitSingletons";
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
-import ExpressPatch from "../../../../expressInitializer/decorators/httpMethods/ExpressPatch";
+import ExpressPatch from "../../../../expressInitializer/httpMethods/ExpressPatch";
 
 export default function Patch(endpoint:string="/",...middleware:any) {
 

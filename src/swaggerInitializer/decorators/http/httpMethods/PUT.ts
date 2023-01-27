@@ -1,6 +1,6 @@
 import InitSingletons from "../../../../config/InitSingletons";
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
-import ExpressPut from "../../../../expressInitializer/decorators/httpMethods/ExpressPut";
+import ExpressPut from "../../../../expressInitializer/httpMethods/ExpressPut";
 
 export default function Put(endpoint:string="/",...middleware:any) {
 

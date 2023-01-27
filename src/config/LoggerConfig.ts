@@ -1,6 +1,5 @@
 import { Format } from "logform";
 import winston, { Logger } from "winston";
-import DotenvComponent from "../components/DotenvComponent";
 
 export class WinstonConfig {
 
@@ -10,18 +9,18 @@ export class WinstonConfig {
             winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
             winston.format.json()
         ];
-        if (DotenvComponent.LOGGER_ENVIRONMENT?.toLowerCase() === "local" ) {
 
-            settings.pop();
-            settings.unshift(winston.format.colorize({
-                all: true
-            }));
-            settings.push(winston.format.printf(((info) => {
-                const context = !info.context?"":` | context: ${JSON.stringify(info.context)}`;
-                const error = !info.error?"":` | error: ${JSON.stringify(info.error)}`;
-                return `[${info.timestamp}] | ${info.level}: ${info.message} | class name: ${info.className} ${context} ${error}`;
-            })));
-        }
+
+        settings.pop();
+        settings.unshift(winston.format.colorize({
+            all: true
+        }));
+        settings.push(winston.format.printf(((info) => {
+            const context = !info.context?"":` | context: ${JSON.stringify(info.context)}`;
+            const error = !info.error?"":` | error: ${JSON.stringify(info.error)}`;
+            return `[${info.timestamp}] | ${info.level}: ${info.message} | class name: ${info.className} ${context} ${error}`;
+        })));
+
         return winston.format.combine(...settings);
     }
     createLogger(className: string): Logger {
@@ -35,12 +34,12 @@ export class WinstonConfig {
         
         const transports = [new winston.transports.Console()];
         return winston.createLogger({
-            level: DotenvComponent.LOGGER_LEVEL,
+            level: "debug",
             format: this.setFormatOfLogger(),
             levels,
             transports,
             defaultMeta: {
-                serviceName: DotenvComponent.LOGGER_SERVICE_NAME,
+                serviceName: "express-autoconfigure",
                 className
             }
         });
