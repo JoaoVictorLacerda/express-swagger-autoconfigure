@@ -29,7 +29,7 @@ Below is a walkthrough of all available decorators
 * **@Title** - Puts a title on your documentation | String
 * **@Version** - Defines API version | String
 * **@BearerTokenJWT** - Defines if the API uses JWT Tokens as a security mechanism | Boolean
-* **ExpressInitializer** - Initializes an express app and configures its routes
+* **@ExpressInitializer** - Initializes an express app and configures its routes
 
 ### Second Configuration
 * **@Controller** - Specifies a controller within the express context | String
