@@ -59,7 +59,8 @@ import {BasePath,
     Description,
     SwaggerInitializer,
     Title,
-    Version} from "express-swagger-autoconfigure";
+    Version,
+    ExpressInitializer} from "express-swagger-autoconfigure";
 
 // Configure a class with the first configuration
 @SwaggerInitializer
@@ -70,7 +71,7 @@ import {BasePath,
 @BearerTokenJWT(true)
 export default class App {
 
-    @Expressinitializer
+    @ExpressInitializer
     private app: Express;
 
     constructor () {
