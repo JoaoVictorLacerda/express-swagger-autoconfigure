@@ -1,43 +1,29 @@
-import winston from "winston";
-import { WinstonConfig, WinstonLoggerBuild } from "../config/LoggerConfig";
-
-
 export default class LoggerComponent {
 
-    private logger: winston.Logger;
 
 
-    constructor (className:string) {
-        const configLogger = new WinstonConfig();
-        this.logger = configLogger.createLogger(className);
-    }
+    public debug(message: string): void {
 
-    public debug(message: string, context?: object): void {
-
-        const object = WinstonLoggerBuild.buildObjectLogger(message, context);
-        this.logger.debug(object);
+        console.log(message, "level: DEBUG");
 
     }
 
-    public info(message: string, context?: object): void {
+    public info(message: string): void {
 
-        const object = WinstonLoggerBuild.buildObjectLogger(message, context);
-        this.logger.info(object);
+        console.log(message, "level: INFO");
 
     }
 
-    public error(message: string, error:unknown, context?: object): void {
+    public error(message: string, error:unknown): void {
 
-        const object = WinstonLoggerBuild.buildObjectLogger(message, context, error);
-        this.logger.error(object);
+        console.error(message, error, "level: ERROR");
 
     }
 
 
-    public warn(message: string, context?: object): void {
+    public warn(message: string): void {
 
-        const object = WinstonLoggerBuild.buildObjectLogger(message, context);
-        this.logger.warn(object);
+        console.log(message, "level: WARN");
 
     }
 }

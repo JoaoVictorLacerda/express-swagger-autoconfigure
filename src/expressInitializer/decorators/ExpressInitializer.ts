@@ -3,8 +3,8 @@ import ExpressInformation from "../../config/singletons/ExpressInformation";
 import LoggerComponent from "../../component/LoggerComponent";
 
 
-const logger = new LoggerComponent("express-autoconfigure")
-export default function Expressinitializer(target: any, propertyKey: string) {
+const logger = new LoggerComponent()
+export default function ExpressInitializer(target: any, propertyKey: string) {
 
     const rotes:any = ExpressInformation.getInstance().getApi();
 
@@ -17,18 +17,21 @@ export default function Expressinitializer(target: any, propertyKey: string) {
         const controllerName = key;
 
         Object.keys(rotes[key]).forEach(key2 => {
+            try{
+                if(key2 !== "endpoint"){
 
-            if(key2 !== "endpoint"){
+                    const httpMethodAndRoute = key2.split(" ");
+                    httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/{/g,":")
+                    httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/}/g,"")
 
-                const httpMethodAndRoute = key2.split(" ");
-                httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/{/g,":")
-                httpMethodAndRoute[1] = httpMethodAndRoute[1].replace(/}/g,"")
+                    const callback = rotes[key][key2].function;
+                    const middleware = rotes[key][key2].middleware;
 
-                const callback = rotes[key][key2].function;
-                const middleware = rotes[key][key2].middleware;
-
-                getHttpMethod(expressRoutes, httpMethodAndRoute[0], httpMethodAndRoute[1], callback, middleware)
-                logger.info(`${key2} - mapped successfully`)
+                    getHttpMethod(expressRoutes, httpMethodAndRoute[0], httpMethodAndRoute[1], callback, middleware)
+                    logger.info(`${key2} - mapped successfully`)
+                }
+            }catch (e) {
+                logger.error(`${key2} - mapped unsuccessfully`, e)
             }
         })
         const finalUrl = rotes[controllerName].endpoint

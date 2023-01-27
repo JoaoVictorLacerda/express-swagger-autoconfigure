@@ -15,4 +15,4 @@ export { default as Description }from "./swaggerInitializer/decorators/swagger/s
 export { default as Title }from "./swaggerInitializer/decorators/swagger/swaggerConfig/Title";
 export { default as Version }from "./swaggerInitializer/decorators/swagger/swaggerConfig/Version";
 export { default as SwaggerInitializer }from "./swaggerInitializer/decorators/swagger/SwaggerInitializer";
-export { default as Expressinitializer } from "./expressInitializer/decorators/Expressinitializer";
+export { default as ExpressInitializer } from "./expressInitializer/decorators/ExpressInitializer";
