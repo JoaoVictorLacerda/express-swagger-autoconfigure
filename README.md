@@ -86,8 +86,8 @@ export default class App {
     private initControllers(){
         // It is important to instantiate all of your controllers
         // in this class so that the decorators can be applied.
-        new MeuController1();
-        new MeuController2();
+        new MyController1();
+        new MyController2();
     }
     public getApp(): Express {
         return this.app;
@@ -97,7 +97,7 @@ export default class App {
 ### Controller Configuration
 ```javascript
 @Controller("/controller1")
-export default class MeuController1 {
+export default class MyController1 {
     
     //health-check
     @StatusResponse(200)
@@ -112,7 +112,7 @@ export default class MeuController1 {
 ```
 ```javascript
 @Controller("/controller2")
-export default class MeuController2 {
+export default class MyController2 {
     
     
     @StatusResponse(202)
