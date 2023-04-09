@@ -9,7 +9,7 @@ export { default as ParamPath }from "./swaggerInitializer/decorators/http/httpRe
 export { default as Query }from "./swaggerInitializer/decorators/http/httpRequest/Query"
 export { default as StatusResponse }from "./swaggerInitializer/decorators/http/httpResponse/StatusResponse";
 export { default as Controller }from "./swaggerInitializer/decorators/http/Controller";
-export { default as BasePath }from "./swaggerInitializer/decorators/swagger/swaggerConfig/BasePath";
+export { default as SwaggerEndpoint }from "./swaggerInitializer/decorators/swagger/swaggerConfig/SwaggerEndpoint";
 export { default as BearerTokenJWT }from "./swaggerInitializer/decorators/swagger/swaggerConfig/BearerTokenJWT";
 export { default as Description }from "./swaggerInitializer/decorators/swagger/swaggerConfig/Description";
 export { default as Title }from "./swaggerInitializer/decorators/swagger/swaggerConfig/Title";

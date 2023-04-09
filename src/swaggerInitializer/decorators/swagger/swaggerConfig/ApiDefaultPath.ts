@@ -1,6 +1,6 @@
 import SwaggerInformation from "../../../../config/singletons/SwaggerInformation";
 
-export default function BasePath(basePath: string) {
+export default function ApiDefaultPath(basePath: string) {
 
     return (target: Function) => {
         SwaggerInformation.getInstance().getSwaggerConfig().basePath= basePath

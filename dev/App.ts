@@ -1,17 +1,18 @@
 import  Express from "express";
 import {
-    BasePath,
+
     BearerTokenJWT,
     Description,
-    ExpressInitializer,
+    ExpressInitializer, SwaggerEndpoint,
     SwaggerInitializer,
     Title,
     Version
 } from "../src/index";
 import HealthCheckController from "./Controller";
+import ApiDefaultPath from "../src/swaggerInitializer/decorators/swagger/swaggerConfig/ApiDefaultPath";
 
 @SwaggerInitializer
-@BasePath("/doc")
+@SwaggerEndpoint("/doc")
 @Description("Essa api é responsável pela estrutura backend do projeto RunBuddy")
 @Title("RunBuddy")
 @Version("1.0.0")

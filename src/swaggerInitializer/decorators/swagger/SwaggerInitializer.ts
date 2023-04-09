@@ -10,8 +10,7 @@ export default function SwaggerInitializer(target: Function){
 
     configRoutes(swaggerConfig.paths)
 
-    app.use(swaggerConfig.basePath, swaggerUi.serve);
-    app.get(swaggerConfig.basePath, swaggerUi.setup(swaggerConfig))
+    app.use(SwaggerInformation.getInstance().getSwaggerEnpoint(), swaggerUi.serve, swaggerUi.setup(swaggerConfig))
 }
 
 function configRoutes(paths: any){

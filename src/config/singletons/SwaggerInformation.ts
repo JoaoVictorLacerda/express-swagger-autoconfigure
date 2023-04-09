@@ -25,6 +25,7 @@ export default class SwaggerInformation {
         },
         paths:{}
     };
+    private swaggerEndpoint="/"
 
     public getEnpoints(): any{
         return this.mappedApi;
@@ -32,5 +33,12 @@ export default class SwaggerInformation {
 
     public getSwaggerConfig(): any{
         return this.swaggerConfig;
+    }
+
+    public getSwaggerEnpoint(){
+        return this.swaggerEndpoint
+    }
+    public setSwaggerEndpoint(swaggerEndpoint: string){
+        this.swaggerEndpoint=swaggerEndpoint;
     }
 }
