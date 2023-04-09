@@ -8,7 +8,8 @@ export default function BearerTokenJWT(isSecurity: boolean) {
                 Bearer:{
                     type:"apiKey",
                     name:"Authorization",
-                    in:"header"
+                    in:"header",
+                    description:">- Coloque o prefixo `Bearer ` antes de colocar o token"
                 }
             }
         }

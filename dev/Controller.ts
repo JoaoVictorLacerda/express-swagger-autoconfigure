@@ -22,10 +22,7 @@ export default class HealthCheckController {
     @StatusResponse(200)
     @StatusResponse(400)
     @FormData({
-        img: FormDataTypes.FILE,
         name: FormDataTypes.STRING,
-        rules: FormDataTypes.ARRAY,
-        age: FormDataTypes.NUMBER
 
     })
     @Post("/test",(req:any, res:any, next:any)=>{
