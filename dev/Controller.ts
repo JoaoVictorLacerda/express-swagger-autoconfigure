@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {Controller, Get, StatusResponse, FormData, Post, FormDataTypes} from "../src/index";
+import {Controller, Body,Get, StatusResponse, FormData, Post, FormDataTypes} from "../src/index";
 
 
 @Controller("/health-check")
@@ -7,7 +7,8 @@ export default class HealthCheckController {
 
     @StatusResponse(200)
     @StatusResponse(400)
-    @Get()
+    @Body({email:"striasdsang", password:"string"})
+    @Post()
     public async check(request: Request, response: Response): Promise<Response> {
 
         try {
@@ -21,13 +22,14 @@ export default class HealthCheckController {
     @StatusResponse(200)
     @StatusResponse(400)
     @FormData({
-        img: FormDataTypes.FILE,
         name: FormDataTypes.STRING,
-        rules: FormDataTypes.ARRAY,
-        age: FormDataTypes.NUMBER
 
     })
-    @Post()
+    @Post("/test",(req:any, res:any, next:any)=>{
+        const bearerToken = req.headers["authorization"];
+        console.log("ok")
+        next()
+    })
     public async testFormData(request: Request, response: Response): Promise<Response> {
 
         try {

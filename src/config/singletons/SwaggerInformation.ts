@@ -18,13 +18,12 @@ export default class SwaggerInformation {
             version:"1.0.0"
         },
         basePath:"/",
-        components:{
-            securitySchemes:{
+        securityDefinitions:{
 
-            }
         },
         paths:{}
     };
+    private swaggerEndpoint="/"
 
     public getEnpoints(): any{
         return this.mappedApi;
@@ -32,5 +31,12 @@ export default class SwaggerInformation {
 
     public getSwaggerConfig(): any{
         return this.swaggerConfig;
+    }
+
+    public getSwaggerEnpoint(){
+        return this.swaggerEndpoint
+    }
+    public setSwaggerEndpoint(swaggerEndpoint: string){
+        this.swaggerEndpoint=swaggerEndpoint;
     }
 }

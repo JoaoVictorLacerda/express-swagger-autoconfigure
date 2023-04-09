@@ -12,21 +12,24 @@ export default function buildObjectPath(
     const statusTransformed: any = getStatusTransformed(status)
 
     const securityResult= isSecurity(controller);
-    const docRequest= isBody(controller)
-    const isParam:any = isParamPath(controller);
-    const isForm:any = isFormData(controller);
+    const body:any= isBody(controller)
+    const param:any = isParamPath(controller);
+    const form:any = isFormData(controller);
     const consumes = []
-    if(isForm.parameters){
+
+    if(form.parameters){
         consumes.push("multipart/form-data")
+    }
+    if(body.parameters){
+        consumes.push("application/json")
     }
     return  {
         security:securityResult,
         tags:[
             controllerName
         ],
-        consumes: consumes,
-        parameters: (isForm.parameters || []).concat(isParam.parameters || []),
-        requestBody:docRequest,
+        consumes:consumes,
+        parameters: (body.parameters || []).concat(param.parameters || [], form.parameters || []),
         responses:{
             ...statusTransformed
         }
@@ -53,7 +56,7 @@ function isSecurity(controller: any){
     if(controller.security > 0){
         securityResult = [
             {
-                "bearerAuth": []
+                "Bearer": []
             }
         ]
     }

@@ -10,7 +10,7 @@ class Server {
         this.server = app.getApp();
     }
     public async startServer():Promise<void> {
-        this.server.listen(5567, ()=>{console.log("OK")});
+        this.server.listen(5000, ()=>{console.log("OK")});
     }
 
 }

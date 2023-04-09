@@ -24,8 +24,9 @@ Below is a walkthrough of all available decorators
 
 ### Frist Configuration:
 * **@SwaggerInitializer** - Loads Swagger in your express application  | String
-* **@BasePath** - Defines the path to access documentation | String
-* **@Description** - Describes your application within documentation | String
+* **@SwaggerEndpoint** - Defines the path to access documentation | String
+* **@ApiDefaultPath** - Defines the main path of your API | String
+* **@Description** - Describes your application within documenta*tion | String
 * **@Title** - Puts a title on your documentation | String
 * **@Version** - Defines API version | String
 * **@BearerTokenJWT** - Defines if the API uses JWT Tokens as a security mechanism | Boolean
@@ -65,7 +66,8 @@ import {BasePath,
 
 // Configure a class with the first configuration
 @SwaggerInitializer
-@BasePath("/documentation")
+@SwaggerEndpoint("/documentation") // swagger documentation will be available on http://localhost:5000/documentation (Optional, default /)
+@ApiDefaultPath("/api") // swagger request to http://localhost:5000/api/endpoint | (Optional, default /)
 @Description("Essa api é responsável pelo exemplo de utilização do express-swagger-autoconfigure")
 @Title("Example-of-express-swagger-autoconfigure")
 @Version("1.0.0")
