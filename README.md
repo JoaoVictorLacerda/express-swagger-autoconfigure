@@ -45,6 +45,7 @@ Below is a walkthrough of all available decorators
 * **@StatusResponse** - Adds HTTP response codes | number
 * **@Body** - Adds a Body as a request object | Object
 * **@ParamPath** - Adds a ParamPath as a request object | Object
+* **@FormData** - Adds a FormData as a request objet | Object. Utilize *FormDataTypes* for grant types
 * **@Header** - TODO
 * **@Query** - TODO
 
@@ -148,6 +149,21 @@ export default class MyController2 {
     // Default = "/" 
     @Post() // It is important to put the Http Method Decorator as the first configuration.
     public create(request: Request, response: Response): Promise<Response> {
+        //... implementation
+    }
+    @StatusResponse(200)
+    @StatusResponse(400)
+    @FormData({
+        img: FormDataTypes.FILE,
+        name: FormDataTypes.STRING,
+        rules: FormDataTypes.ARRAY,
+        age: FormDataTypes.NUMBER,
+        isMarried:FormDataTypes.BOOLEAN
+
+    })
+    // Default = "/" 
+    @Post() // It is important to put the Http Method Decorator as the first configuration.
+    public createProfile(request: Request, response: Response): Promise<Response> {
         //... implementation
     }
 }
