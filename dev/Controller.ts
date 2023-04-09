@@ -7,7 +7,7 @@ export default class HealthCheckController {
 
     @StatusResponse(200)
     @StatusResponse(400)
-    @Body({email:"string", password:"string"})
+    @Body({email:"striasdsang", password:"string"})
     @Post()
     public async check(request: Request, response: Response): Promise<Response> {
 
@@ -28,7 +28,11 @@ export default class HealthCheckController {
         age: FormDataTypes.NUMBER
 
     })
-    @Post("/test")
+    @Post("/test",(req:any, res:any, next:any)=>{
+        const bearerToken = req.headers["authorization"];
+        console.log("ok")
+        next()
+    })
     public async testFormData(request: Request, response: Response): Promise<Response> {
 
         try {

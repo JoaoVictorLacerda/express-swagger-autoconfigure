@@ -8,7 +8,7 @@ export default function makeBodyDoc(params: any){
     }
     Object.keys(params).forEach( (key:any) =>{
         schema.properties[key]= {
-            "type": params[key]
+            "example": params[key]
         }
     })
     const paramPath={

@@ -56,7 +56,7 @@ function isSecurity(controller: any){
     if(controller.security > 0){
         securityResult = [
             {
-                "bearerAuth": []
+                "Bearer": []
             }
         ]
     }

@@ -18,10 +18,8 @@ export default class SwaggerInformation {
             version:"1.0.0"
         },
         basePath:"/",
-        components:{
-            securitySchemes:{
+        securityDefinitions:{
 
-            }
         },
         paths:{}
     };
