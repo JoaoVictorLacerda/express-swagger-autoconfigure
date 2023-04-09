@@ -1,5 +1,6 @@
 import makeBodyDoc from "./makeBodyDoc";
 import makeParamsDoc from "./makeParamsDoc";
+import makeFormDataDoc from "./makeFormDataDoc";
 
 export default function buildObjectPath(
     httpMethod: string,
@@ -13,12 +14,18 @@ export default function buildObjectPath(
     const securityResult= isSecurity(controller);
     const docRequest= isBody(controller)
     const isParam:any = isParamPath(controller);
+    const isForm:any = isFormData(controller);
+    const consumes = []
+    if(isForm.parameters){
+        consumes.push("multipart/form-data")
+    }
     return  {
         security:securityResult,
         tags:[
             controllerName
         ],
-        parameters:isParam.parameters,
+        consumes: consumes,
+        parameters: (isForm.parameters || []).concat(isParam.parameters || []),
         requestBody:docRequest,
         responses:{
             ...statusTransformed
@@ -32,6 +39,13 @@ function isParamPath(controller: any){
         paramResult=makeParamsDoc(controller.paramPath);
     }
     return paramResult;
+}
+function isFormData(controller: any){
+    let formDataResult = {}
+    if(controller.formData){
+        formDataResult=makeFormDataDoc(controller.formData);
+    }
+    return formDataResult;
 }
 function isSecurity(controller: any){
 

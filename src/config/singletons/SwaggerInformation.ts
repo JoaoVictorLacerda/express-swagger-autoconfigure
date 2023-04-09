@@ -11,7 +11,7 @@ export default class SwaggerInformation {
     }
     private mappedApi: any = {};
     private swaggerConfig: any = {
-        openapi:"3.0.0",
+        swagger:"2.0",
         info:{
             title: "Default-API",
             description:"this is auto generated documentation with lib {{lib}}",
