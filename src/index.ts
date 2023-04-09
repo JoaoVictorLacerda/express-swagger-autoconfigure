@@ -16,3 +16,5 @@ export { default as Title }from "./swaggerInitializer/decorators/swagger/swagger
 export { default as Version }from "./swaggerInitializer/decorators/swagger/swaggerConfig/Version";
 export { default as SwaggerInitializer }from "./swaggerInitializer/decorators/swagger/SwaggerInitializer";
 export { default as ExpressInitializer } from "./expressInitializer/decorators/ExpressInitializer";
+export { default as FormData } from "./swaggerInitializer/decorators/http/httpRequest/FormData";
+export { FormDataTypes } from "./swaggerInitializer/decorators/http/httpRequest/FormData";
