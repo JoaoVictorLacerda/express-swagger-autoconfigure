@@ -16,6 +16,7 @@ import ApiDefaultPath from "../src/swaggerInitializer/decorators/swagger/swagger
 @Description("Essa api é responsável pela estrutura backend do projeto RunBuddy")
 @Title("RunBuddy")
 @Version("1.0.0")
+@ApiDefaultPath("/")
 @BearerTokenJWT(true)
 export default class App {
 

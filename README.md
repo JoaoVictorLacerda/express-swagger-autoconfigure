@@ -43,12 +43,12 @@ Below is a walkthrough of all available decorators
 * **@Put** - Specifies PUT type endpoints | String, middlewares
 
 ### Fourth Configuration
-* **@StatusResponse** - Adds HTTP response codes | number
+* **@StatusResponse** - Adds HTTP response codes and description | number
 * **@Body** - Adds a Body as a request object | Object
 * **@ParamPath** - Adds a ParamPath as a request object | Object
 * **@FormData** - Adds a FormData as a request objet | Object. Utilize *FormDataTypes* for grant types
-* **@Header** - TODO
-* **@Query** - TODO
+* **@Header** - Adds a Header as a request objet | object
+* **@Query** - Adds a Query as a request objet | object
 
 ## Usage
 
@@ -103,8 +103,8 @@ export default class App {
 export default class MyController1 {
     
     //health-check
-    @StatusResponse(200)
-    @StatusResponse(400)
+    @StatusResponse(200, "Check API successfully")
+    @StatusResponse(400,"Check API unsuccessfully")
     @Get() // It is important to put the Http Method Decorator as the first configuration.
     public check(request: Request, response: Response): Promise<Response> {
 
@@ -118,43 +118,66 @@ export default class MyController1 {
 export default class MyController2 {
     
     
-    @StatusResponse(202)
-    @StatusResponse(400)
-    @Body({email:"string", password:"string"})
+    @StatusResponse(202) // if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400) // if you dont pass description, express-swagger-autoconfigure add for you 
+    @Body({email:"Description", password:"Description"})
     @Post("/login")// It is important to put the Http Method Decorator as the first configuration.
     public login( request: Request, response: Response): Promise<Response> {
        //... implementation
     }
     
-    @StatusResponse(200)
-    @StatusResponse(400)
+    @StatusResponse(200) // if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
     @Get("/", authorizationMiddleware)// It is important to put the Http Method Decorator as the first configuration.
     public read(request: Request, response: Response): Promise<Response> {
         //... implementation
     }
 
-    @StatusResponse(200)
-    @StatusResponse(400)
-    @ParamPath({uuid: "string"})
+    @StatusResponse(200)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @ParamPath({uuid: "Description"})
     @Get("/find-by-uuid/{uuid}", authorizationMiddleware)// It is important to put the Http Method Decorator as the first configuration.
     public findByUuid(request: Request, response: Response): Promise<Response> {
         //... implementation
     }
 
-    @StatusResponse(200)
-    @StatusResponse(400)
+    @StatusResponse(200)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
     @Body({
-        name : "string",
-        email : "string",
-        password: "string"
+        name : "Description",
+        email : "Description",
+        password: "Description"
     })
     // Default = "/" 
     @Post() // It is important to put the Http Method Decorator as the first configuration.
     public create(request: Request, response: Response): Promise<Response> {
         //... implementation
     }
-    @StatusResponse(200)
-    @StatusResponse(400)
+    
+    @StatusResponse(200)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @Query({
+        uuid:"Description"
+    })
+    // Default = "/" 
+    @Post("/query-profile") // It is important to put the Http Method Decorator as the first configuration.
+    public queryProfile(request: Request, response: Response): Promise<Response> {
+        //... implementation
+    }
+
+    @StatusResponse(200)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @Header({
+        profileType:"Description"
+    })
+    // Default = "/" 
+    @Post("/type-profile") // It is important to put the Http Method Decorator as the first configuration.
+    public headerProfile(request: Request, response: Response): Promise<Response> {
+        //... implementation
+    }
+
+    @StatusResponse(200)// if you dont pass description, express-swagger-autoconfigure add for you 
+    @StatusResponse(400)// if you dont pass description, express-swagger-autoconfigure add for you 
     @FormData({
         img: FormDataTypes.FILE,
         name: FormDataTypes.STRING,
@@ -164,7 +187,7 @@ export default class MyController2 {
 
     })
     // Default = "/" 
-    @Post() // It is important to put the Http Method Decorator as the first configuration.
+    @Post("/create-profile") // It is important to put the Http Method Decorator as the first configuration.
     public createProfile(request: Request, response: Response): Promise<Response> {
         //... implementation
     }

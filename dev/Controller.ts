@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {Controller, Body,Get, StatusResponse, FormData, Post, FormDataTypes} from "../src/index";
+import {Controller, Body, StatusResponse, FormData, Post, FormDataTypes, Query, Header} from "../src/index";
 
 
 @Controller("/health-check")
@@ -38,5 +38,37 @@ export default class HealthCheckController {
             return response.status(400).json(error.message);
         }
 
+    }
+
+    @StatusResponse(200)
+    @StatusResponse(400)
+    @Query({
+        name:"string"
+    })
+    @Post("/query-test")
+    public async queryTest(request: Request, response: Response): Promise<Response> {
+
+        try {
+            const {name} = request.query
+            return response.status(200).json(name);
+        } catch (error: any) {
+            return response.status(400).json(error.message);
+        }
+    }
+
+    @StatusResponse(200)
+    @StatusResponse(400)
+    @Header({
+        name:"string"
+    })
+    @Post("/header-test")
+    public async headerTest(request: Request, response: Response): Promise<Response> {
+
+        try {
+            const {name} = request.headers
+            return response.status(200).json(name);
+        } catch (error: any) {
+            return response.status(400).json(error.message);
+        }
     }
 }

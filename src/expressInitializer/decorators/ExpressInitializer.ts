@@ -28,10 +28,10 @@ export default function ExpressInitializer(target: any, propertyKey: string) {
                     const middleware = rotes[key][key2].middleware;
 
                     getHttpMethod(expressRoutes, httpMethodAndRoute[0], httpMethodAndRoute[1], callback, middleware)
-                    logger.info(`${key2} - mapped successfully`)
+                    logger.info(`${rotes[key].endpoint}/${key2.replace(" ","")} - mapped successfully`)
                 }
             }catch (e) {
-                logger.error(`${key2} - mapped unsuccessfully`, e)
+                logger.error(`${rotes[key].endpoint}/${key2.replace(" ","")} - mapped unsuccessfully`, e)
             }
         })
         const finalUrl = rotes[controllerName].endpoint
