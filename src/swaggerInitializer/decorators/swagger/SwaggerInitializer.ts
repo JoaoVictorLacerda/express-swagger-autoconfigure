@@ -22,7 +22,7 @@ function configRoutes(paths: any){
             if(key2 !== "endpoint"){
 
                 const endpoint = key2.split(" ")[0].toLowerCase();
-                const controllerName = key;
+                const controllerName = mappedApi[key].endpoint.replace("/","-").toUpperCase();
                 const statusRequest = mappedApi[key][key2].status
                 const controller = mappedApi[key][key2];
                 const doc = buildObjectPath(endpoint, controllerName, statusRequest, controller);

@@ -1,6 +1,9 @@
 import makeBodyDoc from "./makeBodyDoc";
 import makeParamsDoc from "./makeParamsDoc";
 import makeFormDataDoc from "./makeFormDataDoc";
+import makeQueryDoc from "./makeQueryDoc";
+import makeHeaderDoc from "./makeHeaderDoc";
+
 
 export default function buildObjectPath(
     httpMethod: string,
@@ -15,27 +18,42 @@ export default function buildObjectPath(
     const body:any= isBody(controller)
     const param:any = isParamPath(controller);
     const form:any = isFormData(controller);
-    const consumes = []
-
-    if(form.parameters){
-        consumes.push("multipart/form-data")
-    }
-    if(body.parameters){
-        consumes.push("application/json")
-    }
+    const query: any = isQuery(controller);
+    const header: any = isHeader(controller);
     return  {
         security:securityResult,
         tags:[
             controllerName
         ],
-        consumes:consumes,
-        parameters: (body.parameters || []).concat(param.parameters || [], form.parameters || []),
+        parameters: (
+            body.parameters || [])
+            .concat(
+                param.parameters || [],
+                form.parameters || [],
+                query.parameters || [],
+                header.parameters || []
+            ),
         responses:{
-            ...statusTransformed
+            ...status
         }
     };
 }
 
+function isHeader(controller: any){
+    let queryResult = {}
+    if(controller.header){
+        queryResult=makeHeaderDoc(controller.header);
+    }
+    return queryResult;
+}
+
+function isQuery(controller: any){
+    let queryResult = {}
+    if(controller.query){
+        queryResult=makeQueryDoc(controller.query);
+    }
+    return queryResult;
+}
 function isParamPath(controller: any){
     let paramResult = {}
     if(controller.paramPath){
@@ -49,18 +67,6 @@ function isFormData(controller: any){
         formDataResult=makeFormDataDoc(controller.formData);
     }
     return formDataResult;
-}
-function isSecurity(controller: any){
-
-    let securityResult:any = [];
-    if(controller.security > 0){
-        securityResult = [
-            {
-                "Bearer": []
-            }
-        ]
-    }
-    return securityResult;
 }
 
 function isBody(controller: any){
@@ -79,4 +85,17 @@ function getStatusTransformed(status: string[]=[]){
         }
     }
     return statusTransformed
+}
+
+function isSecurity(controller: any){
+
+    let securityResult:any = [];
+    if(controller.security > 0){
+        securityResult = [
+            {
+                "Bearer": []
+            }
+        ]
+    }
+    return securityResult;
 }
