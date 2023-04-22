@@ -18,7 +18,7 @@
     "autoconfigure"
   ],
   "author": "João Victor Lacerda de Queiroz",
-  "license": "MIT",
+  "license": "GNU AFFERO GENERAL PUBLIC LICENSE",
   "repository": {
     "type": "git",
     "url": "https://github.com/JoaoVictorLacerda/express-autoconfigure"
