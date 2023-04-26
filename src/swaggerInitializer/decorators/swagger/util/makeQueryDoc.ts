@@ -6,8 +6,7 @@ export default function makeQueryDoc(params: any){
         const paramPath={
             "in": "query",
             "name": key,
-            "type": params[key],
-            "required": true
+            "description": params[key]
         }
         query.parameters.push(paramPath);
     })

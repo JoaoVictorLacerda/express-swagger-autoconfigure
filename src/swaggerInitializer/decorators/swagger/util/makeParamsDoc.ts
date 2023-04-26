@@ -6,8 +6,7 @@ export default function makeParamsDoc(params: any){
         const paramPath={
             "in": "path",
             "name": key,
-            "type": params[key],
-            "required": true
+            "description": params[key]
         }
         parameters.parameters.push(paramPath);
     })

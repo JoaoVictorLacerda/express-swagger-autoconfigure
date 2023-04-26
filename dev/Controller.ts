@@ -43,7 +43,7 @@ export default class HealthCheckController {
     @StatusResponse(200)
     @StatusResponse(400)
     @Query({
-        name:"string"
+        name:"asdsdasdassa"
     })
     @Post("/query-test")
     public async queryTest(request: Request, response: Response): Promise<Response> {

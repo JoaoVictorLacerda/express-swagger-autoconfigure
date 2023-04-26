@@ -6,8 +6,7 @@ export default function makeHeaderDoc(params: any){
         const paramPath={
             "in": "header",
             "name": key,
-            "type": params[key],
-            "required": true
+            "description": params[key]
         }
         header.parameters.push(paramPath);
     })
