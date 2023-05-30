@@ -49,6 +49,17 @@ Below is a walkthrough of all available decorators
 * **@FormData** - Adds a FormData as a request objet | Object. Utilize *FormDataTypes* for grant types
 * **@Header** - Adds a Header as a request objet | object
 * **@Query** - Adds a Query as a request objet | object
+* 
+### Themes
+To configure the themes, use
+* **@Theme** - Specifies Theme type of Swagger | If not specified, use default swagger theme
+    * ThemesType.FEELING_BLUE
+    * ThemesType.FLATTOP
+    * ThemesType.MATERIAL
+    * ThemesType.MONOKAI
+    * ThemesType.MUTED
+    * ThemesType.NEWS_PAPER
+    * ThemesType.OUTLINE
 
 ## Usage
 
@@ -72,6 +83,7 @@ import {BasePath,
 @Title("Example-of-express-swagger-autoconfigure")
 @Version("1.0.0")
 @BearerTokenJWT(true)
+@Theme(ThemesType.FEELING_BLUE)
 export default class App {
 
     @ExpressInitializer
@@ -193,6 +205,23 @@ export default class MyController2 {
     }
 }
 ```
+
+## Theme examples
+* **FEELING_BLUE**
+![alt text](themesIMG/FEELING_BLUE.png)
+* **FLATTOP**
+![alt text](themesIMG/FLATTOP.png)
+* **MATERIAL**
+![alt text](themesIMG/MATERIAL.png)
+* **MONOKAI**
+![alt text](themesIMG/MONOKAI.png)
+* **MUTED**
+![alt text](themesIMG/MUTED.png)
+* **NEWS_PAPER**
+![alt text](themesIMG/NEWS_PAPER.png)
+* **OUTLINE**
+![alt text](themesIMG/OUTLINE.png)
+
 ## Example
 [Example-of-express-swagger-autoconfigure](https://github.com/JoaoVictorLacerda/Example-of-express-swagger-autoconfigure/tree/main).
 
@@ -203,7 +232,7 @@ A more robust architecture is also necessary.
 To contribute, simply open a pull request with your changes; if it makes sense, it will be approved.
 
 ## License
-This project is licensed under the license. [MIT](https://github.com/JoaoVictorLacerda/express-swagger-autoconfigure/blob/main/license).
+This project is licensed under the license. [GNU AFFERO GENERAL](https://github.com/JoaoVictorLacerda/express-swagger-autoconfigure/blob/main/license).
 
 ## Contact
 _victorqueiroz90@outlook.com_

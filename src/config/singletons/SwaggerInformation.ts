@@ -1,3 +1,5 @@
+import {ThemeInterface} from "../../swaggerInitializer/decorators/swagger/themes/ThemeInterface";
+
 export default class SwaggerInformation {
     private constructor() {
     }
@@ -9,7 +11,10 @@ export default class SwaggerInformation {
         }
         return SwaggerInformation.instance;
     }
+
+
     private mappedApi: any = {};
+    private theme: ThemeInterface = undefined;
     private swaggerConfig: any = {
         swagger:"2.0",
         info:{
@@ -24,6 +29,14 @@ export default class SwaggerInformation {
         paths:{}
     };
     private swaggerEndpoint="/"
+
+
+    public getTheme():any{
+        return this.theme
+    }
+    public setTheme(theme:ThemeInterface){
+        this.theme=theme;
+    }
 
     public getEnpoints(): any{
         return this.mappedApi;

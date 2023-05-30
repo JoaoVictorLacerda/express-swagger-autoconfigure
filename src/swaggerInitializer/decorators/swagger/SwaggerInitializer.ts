@@ -10,7 +10,13 @@ export default function SwaggerInitializer(target: Function){
 
     configRoutes(swaggerConfig.paths)
 
-    app.use(SwaggerInformation.getInstance().getSwaggerEnpoint(), swaggerUi.serve, swaggerUi.setup(swaggerConfig))
+    let swaggerSetup;
+    if(SwaggerInformation.getInstance().getTheme() == undefined){
+        swaggerSetup = swaggerUi.setup(swaggerConfig);
+    }else {
+        swaggerSetup = swaggerUi.setup(swaggerConfig,SwaggerInformation.getInstance().getTheme().getCss());
+    }
+    app.use(SwaggerInformation.getInstance().getSwaggerEnpoint(), swaggerUi.serve, swaggerSetup);
 }
 
 function configRoutes(paths: any){

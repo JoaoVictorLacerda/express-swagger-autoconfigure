@@ -17,4 +17,7 @@ export { default as Version }from "./swaggerInitializer/decorators/swagger/swagg
 export { default as SwaggerInitializer }from "./swaggerInitializer/decorators/swagger/SwaggerInitializer";
 export { default as ExpressInitializer } from "./expressInitializer/decorators/ExpressInitializer";
 export { default as FormData } from "./swaggerInitializer/decorators/http/httpRequest/FormData";
+export { default as Theme} from "./swaggerInitializer/decorators/swagger/swaggerConfig/Theme";
 export { FormDataTypes } from "./swaggerInitializer/decorators/http/httpRequest/FormData";
+// THEMES
+export { default as ThemesType } from "./swaggerInitializer/decorators/swagger/themes/ThemesType";

@@ -17,7 +17,8 @@
     "declaration": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "themesIMG/**/*"
   ],
   "exclude": [
     "dev/**/*"

@@ -4,7 +4,7 @@ import {
     BearerTokenJWT,
     Description,
     ExpressInitializer, SwaggerEndpoint,
-    SwaggerInitializer,
+    SwaggerInitializer, Theme, ThemesType,
     Title,
     Version
 } from "../src/index";
@@ -13,11 +13,12 @@ import ApiDefaultPath from "../src/swaggerInitializer/decorators/swagger/swagger
 
 @SwaggerInitializer
 @SwaggerEndpoint("/doc")
-@Description("Essa api é responsável pela estrutura backend do projeto RunBuddy")
-@Title("RunBuddy")
+@Description("API TEST")
+@Title("TEST NAME")
 @Version("1.0.0")
 @ApiDefaultPath("/")
 @BearerTokenJWT(true)
+@Theme(ThemesType.NEWS_PAPER)
 export default class App {
 
     @ExpressInitializer
